@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAnuncios } from "./service";
 function MainPage() {
-  const [adverts, setAnuncios] = useState([]);
+  const [anuncios, setAnuncios] = useState([]);
 
   useEffect(() => {
     getAnuncios().then((response) => setAnuncios(response.data));
@@ -9,8 +9,8 @@ function MainPage() {
   return (
     <div className="main">
       <ul>
-        {adverts.map((anuncio) => (
-          <li key={anuncio.id}>{anuncio.name}</li>
+        {anuncios.map((anuncio) => (
+          <li key={anuncio.id}>{anuncio.price}</li>
         ))}
       </ul>
     </div>
