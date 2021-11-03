@@ -1,0 +1,14 @@
+.login {
+  display: grid;
+  text-align: center;
+  margin-left: 40%;
+  width: 20%;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  margin-left: 57%;
+}

@@ -1,11 +1,16 @@
 import "./App.css";
-import MainPage from "./components/main/MainPage";
+import "./login/loginPage.css";
+import React, { Fragment } from "react";
+//import MainPage from "./components/main/MainPage";
+import Login from "./login/Login";
 
 function App() {
   return (
-    <div className="app">
-      <MainPage />
-    </div>
+    //aqui metemos Fragment en lugar de los div para envolver todo
+    <Fragment>
+      <h1>Welcome to NODEPOP</h1>
+      <Login />
+    </Fragment>
   );
 }
 

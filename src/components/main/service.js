@@ -8,11 +8,11 @@ export const login = (credentials) => {
   });
 };
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MjdkMzliZC1lNTYyLTRmMWItYTY4My1iN2UwZTU2NmJhMDkiLCJpYXQiOjE2MzU4OTAxNzEsImV4cCI6MTYzNTk3NjU3MX0.LHDwYWrnTSeLCHtRQRbYUzzB5dQyB7cgLJOtOur0nHU";
+//const token =
+//  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MjdkMzliZC1lNTYyLTRmMWItYTY4My1iN2UwZTU2NmJhMDkiLCJpYXQiOjE2MzU4OTAxNzEsImV4cCI6MTYzNTk3NjU3MX0.LHDwYWrnTSeLCHtRQRbYUzzB5dQyB7cgLJOtOur0nHU";
 
 export const getAnuncios = () => {
   const url = "api/v1/adverts";
-  setAuthorizationHeader(token);
+  // setAuthorizationHeader(token);
   return clients.get(url);
 };

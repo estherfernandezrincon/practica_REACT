@@ -1,49 +1,28 @@
-import { useState } from "react";
-import { login } from "../../service";
+import { useState, useEffect } from "react";
+import { login } from "../components/main/service";
 
-function LoginPage({}) {
-  const [value, setValue] = useState({ username: "", password: "" });
-  const [error, setError] = useState(null);
+function Login() {
+  const [myLogin, setLogin] = useState({ email: "", password: "" });
 
-  const change = (event) => {
-    setValue((prevState) => ({
+  const handleLogin = (event) => {
+    setLogin((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const submit = async (event) => {
-    event.preventDefault();
-
-    try {
-      await login(value);
-    } catch (error) {
-      setError(error);
-    }
-  };
-
+  useEffect(() => {
+    login().then(() => setLogin(myLogin));
+  }, [myLogin]);
   return (
-    <div className="loginPage">
-      <h1 className="title">Log in to Nodepop</h1>
-      <form className="form" onSubmit={submit}>
-        <FormField
-          type="text"
-          name="username"
-          label="username"
-          className="form-filed"
-          value={value.username}
-          onChange={submit}
-          autofocus
-        />
-        <FormField
-          type="password"
-          name="password"
-          label="password"
-          className="form-filed"
-          value={value.password}
-          onChange={change}
-        />
-      </form>
+    <div className="login">
+      <label className="username">Username</label>
+      <input type="text"></input>
+      <label className="password">Password</label>
+      <input type="password"></input>
+      <button onChange={handleLogin}>Login</button>
     </div>
   );
 }
+
+export default Login;

@@ -10,7 +10,7 @@ function MainPage() {
     <div className="main">
       <ul>
         {anuncios.map((anuncio) => (
-          <li key={anuncio.id}>{anuncio.price}</li>
+          <li key={anuncio.id}>{anuncio.name}</li>
         ))}
       </ul>
     </div>
