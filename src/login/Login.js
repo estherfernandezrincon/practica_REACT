@@ -16,11 +16,24 @@ function Login() {
   }, [myLogin]);
   return (
     <div className="login">
-      <label className="username">Username</label>
-      <input type="text"></input>
-      <label className="password">Password</label>
-      <input type="password"></input>
-      <button onChange={handleLogin}>Login</button>
+      <h1>Welcome to NODEPOP</h1>
+      <form>
+        <label className="username">Username</label>
+        <input
+          type="text"
+          name="email"
+          value={myLogin.email}
+          onChange={handleLogin}
+        ></input>
+        <label className="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          value={myLogin.password}
+          onChange={handleLogin}
+        ></input>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 }

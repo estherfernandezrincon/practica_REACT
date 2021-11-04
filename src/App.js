@@ -8,7 +8,6 @@ function App() {
   return (
     //aqui metemos Fragment en lugar de los div para envolver todo
     <Fragment>
-      <h1>Welcome to NODEPOP</h1>
       <Login />
     </Fragment>
   );
