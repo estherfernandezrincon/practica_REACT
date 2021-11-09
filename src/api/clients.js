@@ -6,8 +6,16 @@ const clients = axios.create({
 
 clients.interceptors.response.use((response) => response.data);
 
+//TODO controlar mensaje de error para mostrarlo desde login
+
 export const setAuthorizationHeader = (token) => {
   clients.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
+
+//quitamos la clave para hacer logout
+
+export const removeAuthorizationHeader = () => {
+  delete clients.defaults.headers.common["Authorization"];
 };
 
 export default clients;

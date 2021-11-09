@@ -17,22 +17,6 @@ h1 {
   padding: 10px;
 }
 
-ul {
-  color: blue;
-}
 li {
-  text-decoration: none;
   color: white;
-}
-
-.item1 {
-  background-color: pink;
-}
-
-.item2 {
-  background-color: green;
-}
-
-.item3 {
-  background-color: rgb(40, 54, 40);
 }

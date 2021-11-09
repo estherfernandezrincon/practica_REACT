@@ -12,7 +12,7 @@ function Login({ onLogin }) {
     }));
   };
 
-  console.log(myLogin);
+  //console.log(myLogin);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -53,6 +53,7 @@ function Login({ onLogin }) {
           Login
         </button>
       </form>
+
       {error && <div className="loginError">{error.message}</div>}
     </div>
   );
