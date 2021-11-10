@@ -23,3 +23,9 @@ export const getAnuncios = () => {
 
   return clients.get(url);
 };
+
+export const crearAnuncio = () => {
+  const url = "api/v1/adverts";
+
+  return clients.post(url);
+};
