@@ -1,12 +1,12 @@
-import classNames from "classnames";
+//import classNames from "classnames";
 import { useContext } from "react";
-
-import AuthContext from "../../components/main/context";
+import "./header.css";
+import AuthContext from "../components/context";
 
 function Header({ className }) {
   const { isLogged, handleLogout } = useContext(AuthContext);
   return (
-    <header className={classNames("header", className)}>
+    <header className={("header", className)}>
       <div className="header-logo"></div>
       <nav className="header-nav">
         {isLogged ? (
@@ -16,6 +16,7 @@ function Header({ className }) {
         ) : (
           <button className="header-button">Log In</button>
         )}
+        <button className="NewButton">Nuevo Anuncio</button>
       </nav>
     </header>
   );

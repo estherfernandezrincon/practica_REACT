@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { getAnuncios } from "./service";
-import React, { Fragment } from "react";
+//import React, { Fragment } from "react";
 
-//import Layout from "../../layout";
+import Layout from "../layout/Layout";
 
-function MainPage() {
+function MainPage({ ...props }) {
   const [anuncios, setAnuncios] = useState([]);
 
   useEffect(() => {
@@ -13,29 +13,20 @@ function MainPage() {
     // console.log(response.data);
   }, []);
   return (
-    <Fragment>
-      <h1>mis anuncios</h1>
-      <button className="btn">Log out</button>
-      <button className="newAuncio">Nuevo Anuncio</button>
-      <div className="main">
+    <Layout title="mis anuncios" {...props}>
+      <div>
         <ul>
           {anuncios.map((anuncio) => (
             <li key={anuncio.id}>
               {anuncio.name}
+
               <ul>{anuncio.price}</ul>
               <ul>{anuncio.tags}</ul>
             </li>
           ))}
         </ul>
       </div>
-      <div className="main">
-        <ul>
-          {anuncios.map((anuncio) => (
-            <li key={anuncio.id}>{anuncio.name}</li>
-          ))}
-        </ul>
-      </div>
-    </Fragment>
+    </Layout>
   );
 }
 

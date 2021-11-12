@@ -1,8 +1,8 @@
 import clients, {
   setAuthorizationHeader,
   removeAuthorizationHeader,
-} from "../../api/clients";
-import storage from "../../utils/storage";
+} from "../api/clients";
+import storage from "../utils/storage";
 
 //peticion a la api
 export const login = (credentials) => {

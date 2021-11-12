@@ -1,13 +1,5 @@
-h1 {
-  color: Black;
-  font-size: bold;
-}
-
-.title {
-  text-align: center;
-  color: Black;
-}
 .main {
+  background-color: black;
   display: flex;
   margin-top: 50px;
   flex-direction: column;
@@ -15,8 +7,4 @@ h1 {
   padding: 10px;
   grid-gap: 10px;
   padding: 10px;
-}
-
-li {
-  color: white;
 }

@@ -1,12 +1,13 @@
 import "./App.css";
 import "./login/loginPage.css";
-import "./components/main/mainPage.css";
-import React, { Fragment } from "react";
-import MainPage from "./components/main/MainPage";
+import "./components/mainPage.css";
+//import React, { Fragment } from "react";
+import MainPage from "./components/MainPage";
 import Login from "./login/Login";
 import { useState } from "react";
-import { logout } from "./components/main/service";
-import { AuthContextProvider } from "./components/main/context";
+import { logout } from "./components/service";
+import { AuthContextProvider } from "./components/context";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //al pasarle el token mantenemos la sesion iniciada
 function App({ isNowLogged, isNotLogged }) {
@@ -24,12 +25,16 @@ function App({ isNowLogged, isNotLogged }) {
   };
 
   return (
-    //aqui metemos Fragment en lugar de los div para envolver todo
-    <AuthContextProvider value={{ isLogged, handleLogout, handleLogin }}>
-      <Fragment>
+    <Router>
+      <AuthContextProvider value={{ isLogged, handleLogout, handleLogin }}>
+        <Switch>
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/nuevoAnuncio" component={newAnuncio} />
+        </Switch>
         {isLogged ? <MainPage /> : <Login onLogin={handleLogin} />}
-      </Fragment>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </Router>
   );
 }
 
