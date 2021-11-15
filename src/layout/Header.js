@@ -4,7 +4,7 @@ import "./header.css";
 import AuthContext from "../components/context";
 
 function Header({ className }) {
-  const { isLogged, handleLogout } = useContext(AuthContext);
+  const { isLogged, handleLogout, handleLogin } = useContext(AuthContext);
   return (
     <header className={("header", className)}>
       <div className="header-logo"></div>
@@ -14,7 +14,9 @@ function Header({ className }) {
             Log Out
           </button>
         ) : (
-          <button className="header-button">Log In</button>
+          <button className="header-button" onClick={handleLogin}>
+            Log In
+          </button>
         )}
         <button className="NewButton">Nuevo Anuncio</button>
       </nav>

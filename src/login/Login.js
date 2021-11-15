@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { login } from "../components/service";
+import { AuthContextConsumer } from "../components/context";
 
-function Login({ onLogin }) {
+function Login({ onLogin, history }) {
   const [myLogin, setLogin] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
 
@@ -18,7 +19,8 @@ function Login({ onLogin }) {
 
     try {
       await login(myLogin);
-      onLogin();
+      onLogin(); // propiedad que permite cambiar el estado en el padre
+      history.push("/anuncios");
     } catch (error) {
       setError(error);
     }
@@ -59,4 +61,10 @@ function Login({ onLogin }) {
   );
 }
 
-export default Login;
+const ConnectedLogin = (props) => (
+  <AuthContextConsumer>
+    {(auth) => <Login onLogin={auth.handleLogin} {...props} />}
+  </AuthContextConsumer>
+);
+
+export default ConnectedLogin;
