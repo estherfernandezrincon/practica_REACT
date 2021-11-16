@@ -1,4 +1,4 @@
-h1 {
+h3 {
   color: rgb(161, 22, 22);
   font-size: bold;
 }
@@ -14,6 +14,7 @@ h1 {
   padding: 10px;
 }
 
-li {
-  color: white;
+li,
+ul {
+  color: rgb(8, 8, 8);
 }

@@ -4,24 +4,31 @@ import { getAnuncios } from "./service";
 
 import Layout from "../layout/Layout";
 
-function MainPage({ ...props }) {
-  const [anuncios, setAnuncios] = useState([]);
+function MainPage({ history, ...props }) {
+  const [adverts, setAnuncios] = useState([]);
 
   useEffect(() => {
     getAnuncios().then((data) => setAnuncios(data));
-    // setAnuncios(response.data);
+    //setAnuncios(response.data);
     // console.log(response.data);
   }, []);
   return (
     <Layout title="mis anuncios" {...props}>
-      <div>
+      <div className="main">
         <ul>
-          {anuncios.map((anuncio) => (
-            <li key={anuncio.id}>
-              {anuncio.name}
+          {adverts.map((advert) => (
+            <li
+              key={advert.id}
+              onClick={() => history.push(`/anuncios/${advert.id}`)}
+            >
+              <h3>{advert.name}</h3>
 
-              <ul>{anuncio.price}</ul>
-              <ul>{anuncio.tags}</ul>
+              <ul>{advert.price}</ul>
+              <ul>{advert.tags}</ul>
+              {advert.sale ? <p>En venta</p> : <p>Busco</p>}
+              {advert.tags.map((etiqueta) => (
+                <p>{etiqueta}</p>
+              ))}
             </li>
           ))}
         </ul>

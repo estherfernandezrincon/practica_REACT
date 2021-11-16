@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { login } from "../components/service";
 import { AuthContextConsumer } from "../components/context";
-
-function Login({ onLogin, history }) {
+import "./loginPage.css";
+function Login({ onLogin, history, location }) {
   const [myLogin, setLogin] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
 
@@ -20,7 +20,9 @@ function Login({ onLogin, history }) {
     try {
       await login(myLogin);
       onLogin(); // propiedad que permite cambiar el estado en el padre
-      history.push("/anuncios");
+      // si hay location state redige a lo qye hay en from, si no hay location state, redige a home
+      const { from } = location.state || { from: { pathname: "/" } };
+      history.replace(from); // mejor usar replace que push
     } catch (error) {
       setError(error);
     }

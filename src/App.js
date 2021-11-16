@@ -37,17 +37,18 @@ function App({ isNowLogged, isNotLogged }) {
       <AuthContextProvider value={{ isLogged, handleLogout, handleLogin }}>
         <Switch>
           <Route exact path="/Login">
-            {({ history }) => <Login history={history} />}
+            {(routeProps) => <Login {...routeProps} />}
           </Route>
-          <PrivateRoute exact path="/nuevoAnuncio" component={NewAnuncio} />
-          <Route exact path="/anuncios" component={MainPage} />
-          <Route exact path="/detalle" component={Detalle} />
 
-          <Route path="/">
+          <PrivateRoute path="/nuevoAnuncio" component={NewAnuncio} />
+          <PrivateRoute path="/anuncios" component={MainPage} />
+          <Route path="/detalle" component={Detalle} />
+
+          <Route exact path="/">
             <Redirect to="/anuncios" />
           </Route>
           <Route path="/404">
-            <Redirect to="/404" />
+            <div>404 page not found</div>
           </Route>
         </Switch>
       </AuthContextProvider>
