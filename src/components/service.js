@@ -24,8 +24,8 @@ export const getAnuncios = () => {
   return clients.get(url);
 };
 
-export const crearAnuncio = () => {
+export const crearAnuncio = (anuncio) => {
   const url = "api/v1/adverts";
 
-  return clients.post(url);
+  return clients.post(url, anuncio);
 };
