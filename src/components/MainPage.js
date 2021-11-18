@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 import Layout from "../layout/Layout";
 
-const noAdverts = () => {
+const NoAdverts = () => {
   <div className="anuncio">
     <p>No hay anuncios, ¿ quieres crear uno?</p>
     <button as={Link} to="/nuevoAnuncio">
-      Tu Anuncio
+      Nuevo Anuncio
     </button>
   </div>;
 };
@@ -44,7 +44,7 @@ function MainPage({ history, ...props }) {
             ))}
           </ul>
         ) : (
-          <noAdverts />
+          <NoAdverts />
         )}
       </div>
     </Layout>

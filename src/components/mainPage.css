@@ -4,7 +4,7 @@ h3 {
 }
 
 .main {
-  background-color: black;
+  background-color: gray;
   display: flex;
   margin-top: 50px;
   flex-direction: column;

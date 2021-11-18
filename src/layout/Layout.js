@@ -5,6 +5,7 @@ function Layout({ title, children, ...props }) {
     <div className="layout">
       <Header className="layout-header" {...props} />
       <h1>{title}</h1>
+      {children}
     </div>
   );
 }

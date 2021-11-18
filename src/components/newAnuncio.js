@@ -7,11 +7,11 @@ import Layout from "../layout/Layout";
 function NewAnuncio() {
   const [nuevo, setNuevo] = useState({
     name: "",
-    price: "",
+    price: "number",
     sale: "boolean",
     tags: [],
   });
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState(null);
 
   const handleChange = (event) => {
     setNuevo((valores) => ({
@@ -43,13 +43,12 @@ function NewAnuncio() {
             <label className="nombre">Precio</label>
             <input
               type="number"
-              price="price"
               value={nuevo.price}
               onChange={handleChange}
             ></input>
             <label className="nombre">En Venta</label>
             <input
-              type="number"
+              type="boolean"
               name="sale"
               value={true}
               onChange={handleChange}

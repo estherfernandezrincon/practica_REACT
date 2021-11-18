@@ -2,9 +2,11 @@
 import { useContext } from "react";
 import "./header.css";
 import AuthContext from "../components/context";
+import { Link } from "react-router-dom";
 
 function Header({ className }) {
   const { isLogged, handleLogout, handleLogin } = useContext(AuthContext);
+
   return (
     <header className={("header", className)}>
       <div className="header-logo"></div>
@@ -18,7 +20,10 @@ function Header({ className }) {
             Log In
           </button>
         )}
-        <button className="NewButton">Nuevo Anuncio</button>
+
+        <button className="NewButton" as={Link} to="/nuevoAnuncio">
+          Nuevo Anuncio
+        </button>
       </nav>
     </header>
   );
