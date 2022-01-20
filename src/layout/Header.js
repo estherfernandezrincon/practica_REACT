@@ -3,6 +3,7 @@ import { useContext } from "react";
 import "./header.css";
 import AuthContext from "../components/context";
 import { Link } from "react-router-dom";
+import NewButton from "../components/NewButton";
 
 function Header({ className }) {
   const { isLogged, handleLogout, handleLogin } = useContext(AuthContext);
@@ -21,10 +22,16 @@ function Header({ className }) {
           </button>
         )}
 
-        <button className="NewButton" as={Link} to="/nuevoAnuncio">
+        <NewButton as={Link} to="/adverts/new">
           Nuevo Anuncio
-        </button>
+        </NewButton>
       </nav>
+      <form>
+        <label className="label">Filtra por precio</label>
+        <input type="string" name="price" />
+        <label className="label">Filtra por nombre</label>
+        <input type="string" name="price" />
+      </form>
     </header>
   );
 }

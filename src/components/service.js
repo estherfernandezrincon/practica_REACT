@@ -20,12 +20,11 @@ export const logout = () => {
 
 export const getAnuncios = () => {
   const url = "api/v1/adverts";
-
   return clients.get(url);
 };
 
-export const crearAnuncio = (anuncio) => {
+export const crearAnuncio = (formData) => {
   const url = "api/v1/adverts";
 
-  return clients.post(url, anuncio);
+  return clients.post(url, formData);
 };

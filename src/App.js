@@ -1,7 +1,8 @@
 import "./App.css";
 import "./login/loginPage.css";
 import "./components/mainPage.css";
-//import React, { Fragment } from "react";
+import "./components/newAnuncio.css";
+
 import MainPage from "./components/MainPage";
 import NewAnuncio from "./components/NewAnuncio";
 import Detalle from "./components/Detalle";
@@ -40,12 +41,12 @@ function App({ isNowLogged, isNotLogged }) {
             {(routeProps) => <Login {...routeProps} />}
           </Route>
 
-          <PrivateRoute path="/nuevoAnuncio" component={NewAnuncio} />
-          <PrivateRoute path="/anuncios" component={MainPage} />
-          <Route path="/detalle" component={Detalle} />
+          <PrivateRoute path="/adverts/new" component={NewAnuncio} />
+          <PrivateRoute path="/adverts" component={MainPage} />
+          <Route path="/adverts/:id" component={Detalle} />
 
           <Route exact path="/">
-            <Redirect to="/anuncios" />
+            <Redirect to="/adverts" />
           </Route>
           <Route path="/404">
             <div>404 page not found</div>

@@ -1,59 +1,135 @@
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import { Redirect, useHistory } from "react-router";
 import { crearAnuncio } from "./service";
 
+import "./newAnuncio.css";
 import Layout from "../layout/Layout";
 
 function NewAnuncio() {
   const [nuevo, setNuevo] = useState({
     name: "",
-    price: "number",
-    sale: "boolean",
+    sale: "",
+    price: "",
     tags: [],
+    photo: "",
   });
-  //const [error, setError] = useState(null);
 
-  const handleChange = (event) => {
-    setNuevo((valores) => ({
-      ...valores,
-      [event.target.name]: event.target.value,
-    }));
-  };
+  const [createAnuncio, setCreateAnuncio] = useState("");
+  const [error, setError] = useState(null);
+  const history = useHistory();
+  const [radioValue, setRadioValue] = useState("sell");
+  //const [tags, setTags] = useState([]);
+  const [checkBoxValue, setCheckBoxValue] = useState(false);
 
-  const handleSubmit = (event) => {
+  // const handleChange = (event) => {
+  //   setNuevo((valores) => ({
+  //     ...valores,
+  //     [event.target.name]: event.target.value,
+  //   }));
+  // };
+
+  const handleChange = (event) => setNuevo(event.target.value);
+  const handlChangeRadio = (event) => setRadioValue(event.target.value);
+  const handleChangeBox = (event) => setCheckBoxValue(event.target.checked);
+
+  const handleSubmit = async (event) => {
+    const formData = new FormData(nuevo);
+    formData.append("name", nuevo);
     event.preventDefault();
+    try {
+      const createdAnuncio = await crearAnuncio();
+
+      setCreateAnuncio(createdAnuncio.id);
+    } catch (error) {
+      //console.log(error);
+      if (error.status === 401) {
+        return history.push("/adverts");
+      }
+      setError(error());
+    }
   };
 
-  useEffect(() => {
-    crearAnuncio().then(() => setNuevo(nuevo));
-  }, [nuevo]);
+  if (createAnuncio) {
+    return <Redirect to={`/adverts/${createAnuncio.id}`} />;
+  }
 
   return (
     <Layout title="Nuevo Anuncio">
-      <div className="nuevoAnuncio">
+      <div className="anuncio">
         <form>
           <form onSubmit={handleSubmit}>
-            <label className="nombre">Nombre</label>
+            <label className="label">Nombre</label>
             <input
-              type="text"
+              type="string"
               name="name"
               value={nuevo.name}
               onChange={handleChange}
             ></input>
-            <label className="nombre">Precio</label>
+
+            <label className="label">Precio</label>
             <input
               type="number"
+              name="price"
               value={nuevo.price}
               onChange={handleChange}
             ></input>
-            <label className="nombre">En Venta</label>
+            <label className="label">En Venta</label>
             <input
-              type="boolean"
+              type="radio"
+              value="sell"
               name="sale"
-              value={true}
-              onChange={handleChange}
+              ckecked={radioValue === "sell"}
+              onChange={handlChangeRadio}
             ></input>
-            <button type="submit" disabled={!nuevo.name || !nuevo.price}>
+            <label className="label">Compro</label>
+            <input
+              type="radio"
+              value="buy"
+              name="sale"
+              ckecked={radioValue === "buy"}
+              onChange={handlChangeRadio}
+            ></input>
+            <label className="label">Motor</label>
+            <input
+              type="checkbox"
+              checked={checkBoxValue}
+              onChange={handleChangeBox}
+            />
+            <label className="label">Work</label>
+            <input
+              type="checkbox"
+              checked={checkBoxValue}
+              onChange={handleChangeBox}
+            />
+            <label className="label">lifestyle</label>
+            <input
+              type="checkbox"
+              checked={checkBoxValue}
+              onChange={handleChangeBox}
+            />
+            <label className="label">Mobile</label>
+            <input
+              type="checkbox"
+              checked={checkBoxValue}
+              onChange={handleChangeBox}
+            />
+            {/* <select
+              value={tags}
+              onchange={(event) => {
+                setTags(
+                  [...event.target.selectedOptions].map(
+                    (elements) => elements.value
+                  )
+                );
+              }}
+              multiple
+            >
+              <option value="motor">Motor</option>
+              <option value="lifeStyle">Lifestyle</option>
+              <option value="mobile">Mobile</option>
+              <option value="work">Work</option>
+            </select> */}
+            <button type="submit" disabled={!nuevo}>
               Crear Anuncio
             </button>
           </form>
