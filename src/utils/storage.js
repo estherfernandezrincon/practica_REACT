@@ -11,6 +11,10 @@ const storage = {
     localStorage.setItem(key, JSON.stringify(value));
   },
 
+  setStorageKey(key, value) {
+    sessionStorage.setItem(key, JSON.stringify(value));
+  },
+
   remove(key) {
     localStorage.removeItem(key);
   },

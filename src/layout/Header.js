@@ -11,6 +11,7 @@ function Header({ className }) {
   return (
     <header className={("header", className)}>
       <div className="header-logo"></div>
+      <label className="buscador">BUSCADOR</label>
       <nav className="header-nav">
         {isLogged ? (
           <button className="header-button" onClick={handleLogout}>
@@ -27,10 +28,30 @@ function Header({ className }) {
         </NewButton>
       </nav>
       <form>
-        <label className="label">Filtra por precio</label>
-        <input type="string" name="price" />
-        <label className="label">Filtra por nombre</label>
-        <input type="string" name="price" />
+        <label className="label">
+          Nombre
+          <input type="string" name="name" />
+        </label>
+
+        <label className="label">
+          Compra
+          <input type="radio" name="sale" />
+        </label>
+
+        <label className="label">
+          Venta
+          <input type="radio" name="sale" />
+        </label>
+
+        <label className="label">
+          Todos
+          <input type="radio" name="sale" />
+        </label>
+
+        <label className="label">
+          Precio
+          <input type="number" name="price" />
+        </label>
       </form>
     </header>
   );

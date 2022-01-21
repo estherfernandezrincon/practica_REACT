@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
-import { login } from "../components/service";
+import { login, recordarContraseña } from "../components/service";
 import { AuthContextConsumer } from "../components/context";
 import "./loginPage.css";
 function Login({ onLogin, history, location }) {
   const [myLogin, setLogin] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
+  const [checkBoxValue, setCheckBoxValue] = useState(false);
 
   const handleLogin = (event) => {
     setLogin((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
+  };
+
+  const handleChangeBox = (event) => {
+    setCheckBoxValue(event.target.checked);
+    recordarContraseña(checkBoxValue);
   };
 
   //console.log(myLogin);
@@ -49,6 +55,13 @@ function Login({ onLogin, history, location }) {
           value={myLogin.password}
           onChange={handleLogin}
         ></input>
+        <label className="label">Recordar Contraseña</label>
+        <input
+          className="checkbox"
+          type="checkbox"
+          checked={checkBoxValue}
+          onChange={handleChangeBox}
+        />
         <button
           className="btn"
           type="submit"

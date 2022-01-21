@@ -9,10 +9,20 @@
   padding: 10px;
 }
 
+.header-nav {
+  text-align: right;
+}
+
 h1 {
   color: red;
 }
 
 .NewButton {
   color: blue;
+}
+
+.buscador {
+  margin-right: 100px;
+  color: white;
+  margin-left: 100px;
 }

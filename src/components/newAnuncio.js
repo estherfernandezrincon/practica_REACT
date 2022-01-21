@@ -29,7 +29,7 @@ function NewAnuncio() {
   // };
 
   const handleChange = (event) => setNuevo(event.target.value);
-  const handlChangeRadio = (event) => setRadioValue(event.target.value);
+  const handleChangeRadio = (event) => setRadioValue(event.target.value);
   const handleChangeBox = (event) => setCheckBoxValue(event.target.checked);
 
   const handleSubmit = async (event) => {
@@ -37,7 +37,7 @@ function NewAnuncio() {
     formData.append("name", nuevo);
     event.preventDefault();
     try {
-      const createdAnuncio = await crearAnuncio();
+      const createdAnuncio = await crearAnuncio(formData);
 
       setCreateAnuncio(createdAnuncio.id);
     } catch (error) {
@@ -79,7 +79,7 @@ function NewAnuncio() {
               value="sell"
               name="sale"
               ckecked={radioValue === "sell"}
-              onChange={handlChangeRadio}
+              onChange={handleChangeRadio}
             ></input>
             <label className="label">Compro</label>
             <input
@@ -87,7 +87,7 @@ function NewAnuncio() {
               value="buy"
               name="sale"
               ckecked={radioValue === "buy"}
-              onChange={handlChangeRadio}
+              onChange={handleChangeRadio}
             ></input>
             <label className="label">Motor</label>
             <input
@@ -129,7 +129,11 @@ function NewAnuncio() {
               <option value="mobile">Mobile</option>
               <option value="work">Work</option>
             </select> */}
-            <button type="submit" disabled={!nuevo}>
+            <button
+              className="btn"
+              type="submit"
+              disabled={!nuevo.name || !nuevo.price || !nuevo.sale}
+            >
               Crear Anuncio
             </button>
           </form>

@@ -10,7 +10,14 @@ export const login = (credentials) => {
     setAuthorizationHeader(accessToken);
     //console.log(response);
     storage.set("myToken", accessToken);
+    //storage.setStorageKey("myToken", accessToken);
   });
+};
+
+export const recordarContraseña = (token) => {
+  setAuthorizationHeader(token);
+  storage.setStorageKey("myToken", token);
+  console.log(token, "aqui");
 };
 
 export const logout = () => {
