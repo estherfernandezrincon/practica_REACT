@@ -35,7 +35,7 @@ function Header({ className }) {
 
         <label className="label">
           Compra
-          <input type="radio" name="sale" />
+          <input type="radio" value="sell" name="sale" />
         </label>
 
         <label className="label">
@@ -45,12 +45,12 @@ function Header({ className }) {
 
         <label className="label">
           Todos
-          <input type="radio" name="sale" />
+          <input type="radio" value="sell" name="sale" />
         </label>
 
         <label className="label">
           Precio
-          <input type="number" name="price" />
+          <input type="number" value="sell" name="price" />
         </label>
       </form>
     </header>
