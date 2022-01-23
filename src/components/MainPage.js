@@ -43,6 +43,9 @@ function MainPage({ history, ...props }) {
                 {advert.tags.map((etiqueta) => (
                   <p>{etiqueta}</p>
                 ))}
+                <NewButton as={Link} to="/adverts/:id">
+                  Detalle
+                </NewButton>
               </li>
             ))}
           </ul>

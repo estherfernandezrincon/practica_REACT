@@ -10,7 +10,7 @@ clients.interceptors.response.use((response) => response.data);
 
 export const setAuthorizationHeader = (token) => {
   clients.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  console.log(token, "aquirrr");
+  //console.log(token, "aquirrr");
 };
 
 //quitamos la clave para hacer logout
